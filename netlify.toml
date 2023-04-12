@@ -1,4 +1,3 @@
 [build]
-    command = "docker-compose build"
-    publish = "docker-compose push"
-    functions = "functions/"
+    command = "docker compose build"
+    publish = "docker compose push"
