@@ -1,2 +1,2 @@
 [build]
-    commands = ["sudo apt install docker-compose", "docker-compose build"]
+    command = ["sudo apt install docker-compose", "docker-compose build"]
