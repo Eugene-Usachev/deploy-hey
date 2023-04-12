@@ -1,4 +1,5 @@
-[build]
+[pre-build]
     command = "sudo apt install docker-compose"
+[build]
     command = "docker compose build"
     publish = "docker compose push"
