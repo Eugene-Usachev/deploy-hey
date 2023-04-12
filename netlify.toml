@@ -1,3 +1,2 @@
 [build]
     commands = ["sudo apt install docker-compose", "docker-compose build"]
-    publish = "docker-compose push"
