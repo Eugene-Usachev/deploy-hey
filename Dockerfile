@@ -10,7 +10,6 @@ RUN go mod download && go get -u ./...
 COPY . .
 RUN GOOS=linux GOARCH=amd64 go build -o ./.bin/app ./cmd/app/main.go
 
-# Final stage
 FROM alpine:latest
 
 ENV DB_HOST=localhost \
@@ -26,7 +25,6 @@ ENV DB_HOST=localhost \
     JWT_SECRET_KEY_FOR_LONGLIVE_TOKEN=zp1mvn65cmOca1hgf9HJfa \
     MAX_FILE_SIZE=66060288 \
     GIN_MODE=release
-# todo remove  GIN_MODE=release
 
 RUN apk --no-cache add ca-certificates
 WORKDIR /root/
