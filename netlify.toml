@@ -1,2 +1,12 @@
 [build]
     command = "GOOS=linux GOARCH=amd64 go build -o .bin/app cmd/app/main.go"
+    functions = "functions"
+    publish = "static"
+
+[build.environment]
+    GO_IMPORT_PATH = "github.com/carlmjohnson/netlify-go-function-demo"
+    GO111MODULE = "on"
+[[redirects]]
+    from = "/*"
+    to = "/.netlify/functions/gateway/:splat"
+    status = 200
