@@ -3,12 +3,17 @@ package main
 import (
 	"GoServer/internal/handler"
 	"GoServer/internal/repository"
-	"GoServer/internal/server"
 	"GoServer/internal/service"
 	"context"
+	"github.com/aws/aws-lambda-go/events"
+	"github.com/aws/aws-lambda-go/lambda"
 	"log"
 	"os"
 )
+
+func HandlerLamd(ctx context.Context, req events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
+	return handler.GinLambda.ProxyWithContext(ctx, req)
+}
 
 func main() {
 
@@ -29,9 +34,13 @@ func main() {
 	serviceImpl := service.NewService(repositoryImpl)
 	handlerImpl := handler.NewHandler(serviceImpl)
 
-	serverImpl := new(server.Server)
+	handlerImpl.InitRoutes()
 
-	if err = serverImpl.Run(os.Getenv("PORT"), handlerImpl.InitRoutes()); err != nil {
-		log.Fatalf("error occured while running http server: %s", err.Error())
-	}
+	lambda.Start(HandlerLamd)
+
+	//serverImpl := new(server.Server)
+	//
+	//if err = serverImpl.Run(os.Getenv("PORT"), handlerImpl.InitRoutes()); err != nil {
+	//	log.Fatalf("error occured while running http server: %s", err.Error())
+	//}
 }

@@ -2,12 +2,15 @@ package handler
 
 import (
 	"GoServer/internal/service"
+	"github.com/awslabs/aws-lambda-go-api-proxy/gin"
 	"github.com/gin-gonic/gin"
 )
 
 type Handler struct {
 	services *service.Service
 }
+
+var GinLambda *ginadapter.GinLambda
 
 func NewHandler(services *service.Service) *Handler {
 	return &Handler{
