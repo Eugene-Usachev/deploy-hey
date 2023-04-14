@@ -10,18 +10,6 @@ RUN go mod download && go get -u ./...
 COPY . .
 RUN GOOS=linux GOARCH=amd64 go build -o ./.bin/app ./cmd/app/main.go
 
-RUN apk add --no-cache postgresql-client
-
-ENV DB_HOST=postgres \
-    DB_PASSWORD=db_create.go \
-    DB_USERNAME=postgres \
-    DB_PORT=5432 \
-    DB_NAME=hey \
-    SSL_MODE=disable
-
-CMD ["sh", "-c", "until pg_isready -h $DB_HOST -p $DB_PORT; do sleep 1; done; ./app"]
-
-
 FROM alpine:latest
 
 ENV DB_HOST=localhost \
@@ -44,6 +32,8 @@ WORKDIR /root/
 COPY --from=builder /app/.bin/app .
 COPY static/ /root/static/
 
-EXPOSE 4040
+EXPOSE 4040, 5432, 5436
 
-CMD ["./app"]
+RUN apk add --no-cache postgresql-client
+
+CMD ["./app", "sh", "-c", "until pg_isready -h $DB_HOST -p $DB_PORT; do sleep 1; done; ./app"]
