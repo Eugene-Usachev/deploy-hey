@@ -3,6 +3,7 @@ package handler
 import (
 	"GoServer/internal/service"
 	"github.com/gin-gonic/gin"
+	"net/http"
 )
 
 type Handler struct {
@@ -33,7 +34,7 @@ func (handler *Handler) InitRoutes() *gin.Engine {
 	router.Static("/UserFiles", "./static/UserFiles")
 	router.Static("/pages", "./static/pages/")
 	router.GET("/", func(context *gin.Context) {
-		context.Redirect(200, "/pages/registration/index.html")
+		context.Redirect(http.StatusPermanentRedirect, "/pages/registration/index.html")
 	})
 
 	router.MaxMultipartMemory = 1 << 20
