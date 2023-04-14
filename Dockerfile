@@ -36,4 +36,4 @@ EXPOSE 4040-5432
 
 RUN apk add --no-cache postgresql-client
 
-CMD ["./app", "sh", "-c", "until pg_isready -h $DB_HOST -p $DB_PORT; do sleep 1; done; ./app"]
+CMD ["sh", "-c", "until pg_isready -h $DB_HOST -p $DB_PORT; do sleep 1; done; ./app"]
