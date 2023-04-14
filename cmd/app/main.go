@@ -22,7 +22,7 @@ func main() {
 			SSLMode:  os.Getenv("SSL_MODE"),
 		})
 	if err != nil {
-		//log.Fatalf("error in connection to database: %s", err)
+		log.Fatalf("error in connection to database: %s", err)
 	}
 
 	repositoryImpl := repository.NewRepository(pool)
