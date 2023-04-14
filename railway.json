@@ -1,5 +1,0 @@
-{
-  "buildCommand": "docker-compose build",
-  "runCommand": "docker-compose up",
-  "env": {}
-}
