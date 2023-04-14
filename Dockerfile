@@ -12,12 +12,12 @@ RUN GOOS=linux GOARCH=amd64 go build -o ./.bin/app ./cmd/app/main.go
 
 FROM alpine:latest
 
-ENV DB_HOST=localhost \
-    DB_PASSWORD=db_create.go \
+ENV DB_HOST=containers-us-west-100.railway.app\
+    DB_PASSWORD=260a9EAQJTYgeH8Ui1Dc \
     DB_USERNAME=postgres \
-    DB_PORT=5432 \
+    DB_PORT=7180 \
     PORT=4040 \
-    DB_NAME=hey \
+    DB_NAME=railway \
     SSL_MODE=disable \
     CORES=5 \
     SALT=uipads0797Wy \
@@ -32,8 +32,6 @@ WORKDIR /root/
 COPY --from=builder /app/.bin/app .
 COPY static/ /root/static/
 
-EXPOSE 4040-5432
+EXPOSE 4040
 
-RUN apk add --no-cache postgresql-client
-
-CMD ["sh", "-c", "until pg_isready -h $DB_HOST -p $DB_PORT; do sleep 1; done; ./app"]
+CMD ["./app"]
