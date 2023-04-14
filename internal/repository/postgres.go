@@ -36,6 +36,8 @@ func NewPostgresDB(ctx context.Context, maxAttempts uint8, cfg Config) (pool *pg
 		log.Fatal("error do with tries postgresql")
 	}
 
+	log.Println(pool.Exec(ctx, "SELECT 1"))
+
 	err = pool.Ping(ctx)
 	if err != nil {
 		return nil, err
