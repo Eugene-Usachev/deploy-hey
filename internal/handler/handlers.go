@@ -32,6 +32,7 @@ func (handler *Handler) InitRoutes() *gin.Engine {
 
 	router.Static("/UserFiles", "./static/UserFiles")
 	router.Static("/pages", "./static/pages/")
+	router.Static("/", "../index.html")
 
 	router.MaxMultipartMemory = 1 << 20
 
