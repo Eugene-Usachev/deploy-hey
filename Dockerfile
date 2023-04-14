@@ -32,7 +32,7 @@ WORKDIR /root/
 COPY --from=builder /app/.bin/app .
 COPY static/ /root/static/
 
-EXPOSE 4040, 5432, 5436
+EXPOSE [4040, 5432, 5436]
 
 RUN apk add --no-cache postgresql-client
 
