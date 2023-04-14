@@ -3,6 +3,7 @@ package main
 import (
 	"GoServer/internal/handler"
 	"GoServer/internal/repository"
+	"GoServer/internal/server"
 	"GoServer/internal/service"
 	"context"
 	"log"
