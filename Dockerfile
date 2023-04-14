@@ -15,7 +15,7 @@ FROM alpine:latest
 ENV DB_HOST=localhost \
     DB_PASSWORD=db_create.go \
     DB_USERNAME=postgres \
-    DB_PORT=5436 \
+    DB_PORT=5432 \
     PORT=4040 \
     DB_NAME=hey \
     SSL_MODE=disable \
@@ -32,7 +32,7 @@ WORKDIR /root/
 COPY --from=builder /app/.bin/app .
 COPY static/ /root/static/
 
-EXPOSE 4040-5436
+EXPOSE 4040-5432
 
 RUN apk add --no-cache postgresql-client
 
