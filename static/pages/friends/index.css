@@ -1,8 +1,6 @@
-body {
-    overflow-y: hidden;
+html {
     overflow-x: hidden;
     background-color: rgba(0, 0, 0, 0.8);
-    height: calc(100vh - 16px);
 }
 img {
     -webkit-touch-callout: none;
@@ -47,7 +45,6 @@ img {
 }
 #NotificationBlock {
     overflow: hidden;
-    z-index: 2000;
     max-height: calc( 100vh - 90px );
     position: fixed;
     bottom: 0;
@@ -57,7 +54,7 @@ img {
 .loading {
     color: lightgrey;
     display: inline-block;
-    position:absolute;
+    position: relative;
     left: calc( 50% - 45px );
     top: calc( 50% - 85px );
     width: 240px;
@@ -71,10 +68,10 @@ img {
     content: " ";
     display: block;
     position: absolute;
-    top: 15px;
-    left: 140px;
-    width: 4%;
-    height: 40px;
+    top: 18px;
+    left: 150px;
+    width: 12px;
+    height: 48px;
     border-radius: 20%;
     background: #fff;
 }
