@@ -12,10 +12,10 @@ RUN GOOS=linux GOARCH=amd64 go build -o ./.bin/app ./cmd/app/main.go
 
 FROM alpine:latest
 
-ENV DB_HOST=containers-us-west-100.railway.app\
-    DB_PASSWORD=260a9EAQJTYgeH8Ui1Dc \
+ENV DB_HOST=containers-us-west-120.railway.app\
+    DB_PASSWORD=DJbbrT45sJt0mJA883LS \
     DB_USERNAME=postgres \
-    DB_PORT=7180 \
+    DB_PORT=5792 \
     PORT=4040 \
     DB_NAME=railway \
     SSL_MODE=disable \
